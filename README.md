@@ -19,7 +19,7 @@ The slope of the linear model can't be considered zero. If you look at the coeff
 
 3. Does this linear model predict mpg of MechaCar prototypes effectively? Why or why not?
 
-I don't believe that the dataset given to me provides enough information to effectively predict the MPG of the MechaCar. Only two of the four variables show a relationship to MPG. There must be more variables that could help give me insight.
+I don't believe that the dataset given to me provides enough information to effectively predict the MPG of the MechaCar. Only two of the variables show a relationship to MPG. There must be more variables that could help give me insight.
 
 ![this_is_an_image](linear_regression_model.PNG)
 
