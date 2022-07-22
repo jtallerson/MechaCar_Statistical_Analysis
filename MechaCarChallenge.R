@@ -1,0 +1,46 @@
+library(tidyverse)
+
+MechaCar_df <- read.csv("MechaCar_mpg.csv", stringsAsFactors = FALSE, check.names = FALSE)
+
+head(MechaCar_df)
+
+# Linear Regression to Predict MPG
+linear_regression_model = lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD, data = MechaCar_df)
+summary(linear_regression_model)
+
+# Create Visualization for the Trip Analysis
+Suspension_df <- read.csv("Suspension_Coil.csv", stringsAsFactors = FALSE, check.names = FALSE)
+head(Suspension_df)
+
+total_summary <- Suspension_df %>% 
+  summarize(Mean=mean(PSI),
+            Median = median(PSI),
+            VAR = var(PSI),
+            SD= sd(PSI))
+
+total_summary
+
+
+
+lot_summary <- Suspension_df %>% 
+  group_by(Manufacturing_Lot) %>%
+  summarize(Mean=mean(PSI),
+            Median = median(PSI),
+            VAR = var(PSI),
+            SD= sd(PSI),
+            .groups='keep')
+
+lot_summary
+
+
+#  T-Tests on Suspension Coils
+t.test(Suspension_df$PSI, mu=1500)
+
+lot_one = subset(Suspension_df, Manufacturing_Lot=="Lot1")
+lot_two = subset(Suspension_df, Manufacturing_Lot=="Lot2")
+lot_three = subset(Suspension_df, Manufacturing_Lot=="Lot3")
+
+
+t.test(lot_one$PSI, mu=1500)
+t.test(lot_two$PSI, mu=1500)
+t.test(lot_three$PSI, mu=1500)
